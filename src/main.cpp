@@ -41,7 +41,6 @@ void setup() {
 
     btn.attachClick(bottom_pressed);//短按切换状态
     btn.attachLongPressStart(bottom_longpressed);//长按切换特殊状态
-    btn.attachDoubleClick(bottom_sleep);
 
     xTaskCreate(bottom_tick,"bottomtick",2048,NULL,1,NULL);
 
