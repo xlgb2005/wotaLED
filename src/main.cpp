@@ -40,7 +40,7 @@ void setup() {
         //attachInterrupt(digitalPinToInterrupt(9),bottom_pressed,RISING);
 
     btn.attachClick(bottom_pressed);//短按切换状态
-    btn.attachLongPressStart(bottom_longpressed);//长按切换特殊状态
+    btn.attachLongPressStop(bottom_longpressed);//长按切换特殊状态
 
     xTaskCreate(bottom_tick,"bottomtick",2048,NULL,1,NULL);
 
@@ -100,6 +100,10 @@ void bottom_longpressed(){
     FastLED.clear();
     led_special_kind = led_special_kind % led_special_kind_num;
     led_type = 1;
+        if (btn.getPressedMs() >= 2000)
+        {
+            led_type = 2;
+        }
         
 }
 
