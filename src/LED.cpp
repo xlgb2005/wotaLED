@@ -19,7 +19,7 @@ void Wota_mode_fire(CRGB *leds){
         leds[i]=CRGB(255,i*14,0);
         leds[35-i]=CRGB(255,i*14,0);
         FastLED.show();
-        delay(13);
+        vTaskDelay(13/portTICK_PERIOD_MS);
     }
 }
 
@@ -29,7 +29,7 @@ void Wota_mode_sakura(CRGB *leds){
         leds[i]=CRGB(255-i*14,0,255);
         leds[35-i]=CRGB(255-i*14,0,255);
         FastLED.show();
-        delay(13);
+        vTaskDelay(13/portTICK_PERIOD_MS);
     }
 }
 
@@ -41,38 +41,38 @@ void Wota_mode_miku(CRGB *leds){
         leds[i]=CRGB(0,255,0);
         leds[35-i]=CRGB(0,255,0);
         FastLED.show();
-        delay(13);
+        vTaskDelay(13/portTICK_PERIOD_MS);
     }
     for (int i = 14; i < 19; i++)
     {
         leds[i]=CRGB(255,255,255);
         leds[35-i]=CRGB(255,255,255);
         FastLED.show();
-        delay(13);
+        vTaskDelay(13/portTICK_PERIOD_MS);
     }
 }
 
 void Wota_mode_sakulaX3(CRGB *leds){
-    for (int i = 0; i < 7; i++)
+    for (int i = 0; i < 6; i++)
     {
         leds[i]=CRGB(255,255,0);
         leds[35-i]=CRGB(255,255,0);
         FastLED.show();
-        delay(13);
+        vTaskDelay(13/portTICK_PERIOD_MS);
     }
     for (int i = 6; i < 12; i++)
     {
         leds[i]=CRGB(255,0,0);
         leds[35-i]=CRGB(255,0,0);
         FastLED.show();
-        delay(13);
+        vTaskDelay(13/portTICK_PERIOD_MS);
     }
     for (int i = 12; i < 19; i++)
     {
         leds[i]=CRGB(255,0,255);
         leds[35-i]=CRGB(255,0,255);
         FastLED.show();
-        delay(13);
+        vTaskDelay(13/portTICK_PERIOD_MS);
     }
 }
 
@@ -82,6 +82,6 @@ void Wota_mode_frost(CRGB *leds){
         leds[i]=CRGB((int)pow(i,1.91),(int)pow(i,1.91),255);
         leds[35-i]=CRGB((int)pow(i,1.91),(int)pow(i,1.91),255);
         FastLED.show();
-        delay(13);
+        vTaskDelay(13/portTICK_PERIOD_MS);
     }
 }
