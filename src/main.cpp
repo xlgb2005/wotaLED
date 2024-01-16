@@ -30,7 +30,10 @@ OneButton btn = OneButton(
 
 
 void setup() {
-    pinMode(LED_PIN,OUTPUT);
+    gpio_set_direction(GPIO_NUM_6,GPIO_MODE_OUTPUT);
+    gpio_set_direction(GPIO_NUM_7,GPIO_MODE_OUTPUT);
+    gpio_pullup_en(GPIO_NUM_7);
+    gpio_set_level(GPIO_NUM_7,1);
 
     FastLED.addLeds<WS2812,LED_PIN,GRB>(leds,NUM_LEDS);
     FastLED.clear();
@@ -75,11 +78,11 @@ void loop() {
 
         gpio_wakeup_enable(GPIO_NUM_9,GPIO_INTR_LOW_LEVEL);
         esp_sleep_enable_gpio_wakeup();
+        gpio_set_level(GPIO_NUM_7,0);
         led_type = 0;
         esp_light_sleep_start();
-
     }
-    
+    vTaskDelay(1/portTICK_PERIOD_MS);
 }
 
 void bottom_tick(void *pvParameters){
@@ -89,7 +92,7 @@ void bottom_tick(void *pvParameters){
 /// @brief 按钮按下led_kind会加1，还会清理led数据(可用性未知)
 void bottom_pressed(){
     led_kind++;
-    FastLED.clear();FastLED.show();
+    //FastLED.clear();FastLED.show();
     led_kind = led_kind % led_kind_num;
     led_type = 0;
 
@@ -97,7 +100,7 @@ void bottom_pressed(){
 
 void bottom_longpressed(){
     led_special_kind++;
-    FastLED.clear();
+    //FastLED.clear();FastLED.show();
     led_special_kind = led_special_kind % led_special_kind_num;
     led_type = 1;
         if (btn.getPressedMs() >= 2000)
