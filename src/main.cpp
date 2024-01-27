@@ -35,7 +35,7 @@ void setup() {
     gpio_pullup_en(GPIO_NUM_7);
     gpio_set_level(GPIO_NUM_7,1);
 
-    FastLED.addLeds<WS2812,LED_PIN,GRB>(leds,NUM_LEDS);
+    FastLED.addLeds<TM1804,LED_PIN,GRB>(leds,NUM_LEDS);
     FastLED.clear();
     FastLED.setBrightness(bright);
     FastLED.showColor(0xffffff);
