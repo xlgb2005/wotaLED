@@ -2,7 +2,7 @@
 #include "OneButton.h"
 #include "LED.h"
 
-#define bottom_pin 9
+#define bottom_pin 8
 #define FASTLED_INTERNAL
 
 void bottom_tick(void *pvParameters);
@@ -11,13 +11,13 @@ void bottom_pressed();
 void bottom_longpressed();
 void fill(uint32_t color,CRGB *leds);
 
-u8_t led_kind = 0;
-u8_t led_kind_num = 8;
+uint8_t led_kind = 0;
+uint8_t led_kind_num = 8;
 
-u8_t led_special_kind = 0;
-u8_t led_special_kind_num = 2;
+uint8_t led_special_kind = 0;
+uint8_t led_special_kind_num = 2;
 
-u8_t led_type = 0;
+uint8_t led_type = 0;
 
 CRGB leds[NUM_LEDS];
 
@@ -30,10 +30,10 @@ OneButton btn = OneButton(
 
 
 void setup() {
-    gpio_set_direction(GPIO_NUM_6,GPIO_MODE_OUTPUT);
-    gpio_set_direction(GPIO_NUM_7,GPIO_MODE_OUTPUT);
-    gpio_pullup_en(GPIO_NUM_7);
-    gpio_set_level(GPIO_NUM_7,1);
+    //gpio_set_direction(GPIO_NUM_6,GPIO_MODE_OUTPUT);
+    //gpio_set_direction(GPIO_NUM_7,GPIO_MODE_OUTPUT);
+    //gpio_pullup_en(GPIO_NUM_7);
+    //gpio_set_level(GPIO_NUM_7,1);
 
     FastLED.addLeds<TM1804,LED_PIN,GRB>(leds,NUM_LEDS);
     FastLED.clear();
